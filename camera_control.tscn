@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://camera_control.gd" type="Script" id=1]
+[ext_resource path="res://environment.tres" type="Environment" id=2]
+
+[node name="base" type="Spatial"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 0.666447, 0, 0.745552, 0, 1, 0, -0.745552, 0, 0.666447, 0, 1.22332, 0 )
+script/script = ExtResource( 1 )
+camera_base = NodePath(".")
+camera_arm = NodePath("arm")
+camera_hand = NodePath("arm/hand")
+camera = NodePath("arm/hand/camera")
+player = null
+target = null
+
+[node name="arm" type="Spatial" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, -2.98023e-08, 0, 0.569041, 0.82231, 0, -0.82231, 0.569041, 0, 0, 0 )
+
+[node name="hand" type="Spatial" parent="arm"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, -5.96046e-08, 0, 0, 1, 1.49012e-08, -2.98023e-08, 2.98023e-08, 1, 2.2019e-07, 1.78814e-07, 7.32847 )
+
+[node name="camera" type="Camera" parent="arm/hand"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, -5.96046e-08, 0, 0, 1, 1.49012e-08, -2.98023e-08, 2.98023e-08, 1, 0, 0, 0 )
+projection = 0
+fov = 60.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = false
+visible_layers = 1048575
+environment = ExtResource( 2 )
+h_offset = 0.0
+v_offset = 0.0
+
+
